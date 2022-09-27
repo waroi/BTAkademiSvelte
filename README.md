@@ -1,2 +1,2 @@
 # BTAkademiSvelte
-Dechatlon Svelte Eğitimi
+Decathlon Svelte Eğitimi
