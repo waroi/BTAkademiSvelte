@@ -51,7 +51,7 @@ h1 {
 button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 0.3em 1em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
@@ -78,4 +78,50 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+main ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+main h2 {
+  margin: 40px 0 20px 0;
+}
+.input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+input {
+  margin-right: 20px;
+  padding: 5px;
+  width: 100%;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.container li {
+  text-align: left;
+  margin-right: 20px;
+}
+
+.radio-btn {
+  width: 20px;
+  height: 20px;
+  border-radius: 30px;
+  border: 1px solid #fff;
+  padding: 0;
+  margin-right: 10px;
+}
+
+.btn-container {
+  display: flex;
+}
+.btn-container button {
+  margin-right: 5px;
 }

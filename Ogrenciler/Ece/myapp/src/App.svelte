@@ -1,21 +1,69 @@
 <script>
-  import Counter from "./lib/Counter.svelte";
-  import Result from "./Result.svelte";
+  import TodoList from "./TodoList.svelte";
 
-  let name = "Ece";
-  let number = 0;
-  $: count = number * 2;
+  let name = "TODO";
+  let todos = [
+    {
+      id: 0,
+      item: "Svelte Öğren",
+      done: false,
+      edit: false,
+    },
+    {
+      id: 1,
+      item: "Kedi Sev",
+      done: false,
+      edit: false,
+    },
+    {
+      id: 2,
+      item: "Yemek Ye",
+      done: false,
+      edit: false,
+    },
+    {
+      id: 3,
+      item: "Tv İzle",
+      done: false,
+      edit: false,
+    },
+  ];
 
-  let image = {
-    src: "https://cdn.dribbble.com/userupload/3158902/file/original-7c71bfa677e61dea61bc2acd59158d32.jpg?resize=400x0",
-    alt: "Logo",
-    title: "Logo",
+  let newTodo = "";
+
+  const submit = (event) => {
+    if (event.key === "Enter") addTodo();
   };
+
+  const addTodo = () => {
+    if (newTodo) {
+      todos = [
+        ...todos,
+        {
+          id: todos[todos.length - 1].id + 1,
+          item: newTodo,
+          done: false,
+          edit: false,
+        },
+      ];
+    }
+
+    newTodo = "";
+  };
+
+  $: completedTodo = todos.filter((todo) => todo.done === true);
 </script>
 
 <main>
   <h1>{name}</h1>
-  <button on:click={() => (number += 1)}>Click {number}</button>
-  <Result {count} />
-  <img {...image} />
+  <div class="input-container">
+    <input class="todo" bind:value={newTodo} on:keydown={submit} />
+    <button on:click={addTodo}>Ekle</button>
+  </div>
+
+  <TodoList bind:list={todos} />
+
+  <h2>Tamamlandı</h2>
+
+  <TodoList bind:list={completedTodo} completed />
 </main>
