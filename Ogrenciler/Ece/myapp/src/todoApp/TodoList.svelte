@@ -1,8 +1,4 @@
 <script>
-  import { createEventDispatcher } from "svelte";
-
-  const dispatch = createEventDispatcher();
-
   export let list;
   export let completed = false;
 
