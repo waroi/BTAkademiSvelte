@@ -1,5 +1,19 @@
 <script>
-  var todoItems = [
+  /*   import Counter from "./lib/Counter.svelte";
+   */ import { get, post } from "./services";
+  import TodoItem from "./TodoItem.svelte";
+  let newToDo = "";
+  const addtoDo = () => {
+    post("http://localhost:3000/todos", {
+      userId: 1,
+      title: newToDo,
+      completed: false,
+    }).then((r) => {
+      get("http://localhost:3000/todos");
+    });
+  };
+
+  /* var todoItems = [
     { content: "todo1", edit: false, status: false },
     { content: "todo2", edit: false, status: false },
   ];
@@ -19,10 +33,10 @@
   }
   function editme(i) {
     todoItems[i].edit = !todoItems[i].edit;
-  }
+  } */
 </script>
 
-<div class="container">
+<!-- <div class="container">
   <ul>
     {#each todoItems as todoItem, index}
       <li>
@@ -39,11 +53,22 @@
     {/each}
   </ul>
   <input type="text" bind:value={content} />
-  <button on:click={addtoDo} class="buttonGokhan">ekle</button>
+  <button on:click={addtoDo} class="buttonTolga">ekle</button>
+</div> -->
+<div>
+  <input type="text" bind:value={newToDo} />
+  <button on:click={addtoDo}>Add</button>
 </div>
+{#await get("http://localhost:3000/todos")}
+  <h1>Loading.</h1>
+{:then todos}
+  {#each todos as todo}
+    <TodoItem title={todo.title} completed={todo.completed} />
+  {/each}
+{/await}
 
 <style>
-  .buttonGokhan:hover {
+  .buttonTolga:hover {
     background-color: rgb(38, 119, 200);
   }
   .checked {
