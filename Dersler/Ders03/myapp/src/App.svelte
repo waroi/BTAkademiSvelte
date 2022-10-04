@@ -1,13 +1,13 @@
 <script>
   // import AwaitBlock from "./AwaitBlock.svelte";
   // const clickHandle = (e) => console.log(e.target.parentElement.textContent);
-  import { imagePreview } from "./utils";
+  // import { imagePreview } from "./utils";
 
-  let image;
-  const changeHandle = async (e) => {
-    image = await imagePreview(e.target.files[0]);
-    console.log(e.target);
-  };
+  // let image;
+  // const changeHandle = async (e) => {
+  //   image = await imagePreview(e.target.files[0]);
+  //   console.log(e.target);
+  // };
 </script>
 
 <!-- <AwaitBlock /> -->
@@ -19,12 +19,20 @@
   <input type="text" name="name" placeholder="Ad-Soyad" /> <br />
   <button type="submit">Gönder</button>
 </form> -->
-
+<!-- 
 <input type="file" accept="image/*" on:change={changeHandle} />
+
 
 {#if image}
   <img src={image} alt="deneme" />
-{/if}
+{/if} -->
+
+<div on:click={() => console.log("dive tıkladınız")}>
+  <button>1. buton</button>
+  <button on:click|stopPropagation={() => console.log("butona tıkladınız")}
+    >2. buton</button
+  >
+</div>
 
 <style>
 </style>
