@@ -1,5 +1,6 @@
 <script>
-  import Header from "./Header.svelte";
+  import Hoverable from "./Hoverable.svelte";
+  import Summary from "./Summary.svelte";
   import { basket, productsList, products } from "./store";
 
   const resetBasket = () => {
@@ -10,11 +11,18 @@
 
 <div>
   <button disabled={!$basket} on:click={resetBasket}>Sıfırla</button>
-  <img
-    src="https://icon-library.com/images/cart-icon-png-white/cart-icon-png-white-24.jpg"
-    alt="basket"
-  />
-  <span>{$basket}</span>
+  <Hoverable let:hovering={active}>
+    <div class:active>
+      <img
+        src="https://icon-library.com/images/cart-icon-png-white/cart-icon-png-white-24.jpg"
+        alt="basket"
+      />
+      <span>{$basket}</span>
+      {#if active}
+        <Summary />
+      {/if}
+    </div>
+  </Hoverable>
 </div>
 
 <style>
