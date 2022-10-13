@@ -41,4 +41,6 @@ export const productsList = [
 
 export const basket = writable(0);
 
-export const products = writable(JSON.parse(JSON.stringify(productsList)))
+export const products = writable(JSON.parse(JSON.stringify(productsList)));
+
+export const basketItems = writable([]);

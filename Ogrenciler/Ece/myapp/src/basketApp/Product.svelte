@@ -1,5 +1,6 @@
 <script>
-  import { products, basket } from "./store";
+  import { products, basket, basketItems } from "./store";
+
   export let product;
 
   const addToBasket = () => {
@@ -11,6 +12,7 @@
     );
     products.set(newProducts);
     basket.update((value) => value + 1);
+    basketItems.set([...$basketItems, item]);
   };
 </script>
 
